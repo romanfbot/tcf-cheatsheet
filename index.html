@@ -1,0 +1,552 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Шпаргалка по TCF для перехода от A2 к B1 — Roman</title>
+<style>
+:root {
+  --ink: #263238;
+  --muted: #5f6f78;
+  --paper: #fffaf0;
+  --panel: #ffffff;
+  --blue: #d9edf7;
+  --blue-deep: #2f6f86;
+  --gold: #f6c45f;
+  --orange: #e98645;
+  --line: #d9e2e5;
+  --soft: #f3f7f8;
+  --french: #fff1c9;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 12pt;
+  line-height: 1.46;
+  color: var(--ink);
+  background: linear-gradient(135deg, #eef8fb 0%, #fff7df 46%, #fffaf0 100%);
+}
+.sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(255, 250, 240, 0.94);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.header-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+h1 { margin: 0; font-size: 20px; letter-spacing: 0; color: #183f4e; }
+.subtitle { margin: 2px 0 0; color: var(--muted); font-size: 10.5pt; }
+.print-btn {
+  border: 0;
+  background: var(--blue-deep);
+  color: white;
+  padding: 10px 14px;
+  border-radius: 7px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: 0 5px 16px rgba(47,111,134,.22);
+}
+main { max-width: 1180px; margin: 18px auto 42px; padding: 0 18px; }
+.quick-nav {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 8px;
+  margin: 0 0 14px;
+}
+.quick-nav a {
+  display: block;
+  text-decoration: none;
+  color: #224f60;
+  background: rgba(255,255,255,.76);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--gold);
+  padding: 8px 10px;
+  border-radius: 7px;
+  font-size: 10pt;
+  font-weight: 700;
+}
+.section {
+  background: rgba(255,255,255,.9);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  margin: 12px 0;
+  overflow: hidden;
+  box-shadow: 0 10px 28px rgba(36, 71, 82, .08);
+}
+summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 12px 15px;
+  background: linear-gradient(90deg, var(--blue), #fff3ce);
+  color: #173d4c;
+  font-weight: 800;
+  font-size: 15pt;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; font-size: 17px; color: var(--orange); }
+details[open] > summary::after { content: "−"; }
+.section-body { padding: 14px 16px 18px; }
+h2, h3 { color: #254f5e; page-break-after: avoid; }
+h3 { margin: 18px 0 8px; font-size: 12.5pt; border-left: 4px solid var(--orange); padding-left: 8px; }
+p { margin: 0 0 10px; }
+strong { color: #173d4c; }
+.fr, code {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  background: var(--french);
+  color: #264b59;
+  border: 1px solid #f2d98b;
+  border-radius: 4px;
+  padding: 1px 4px;
+  font-size: .92em;
+}
+.cite { color: #7a6a50; font-size: .82em; }
+.table-wrap { overflow-x: auto; margin: 10px 0 16px; page-break-inside: avoid; break-inside: avoid; }
+table { width: 100%; border-collapse: collapse; background: white; font-size: 10.4pt; }
+th, td { border: 1px solid var(--line); padding: 6px 7px; vertical-align: top; }
+th { background: #cfe7f0; color: #173d4c; text-align: left; font-weight: 800; }
+tbody tr:nth-child(even) td { background: #fbf4df; }
+tbody tr:nth-child(odd) td { background: #ffffff; }
+.verb-table table { font-size: 8.3pt; line-height: 1.28; }
+.verb-table th:first-child, .verb-table td:first-child { position: sticky; left: 0; background: #fff4c9; font-weight: 800; min-width: 74px; }
+blockquote {
+  margin: 10px 0 16px;
+  padding: 10px 12px;
+  border-left: 5px solid var(--blue-deep);
+  background: #f5fbfd;
+  border-radius: 0 7px 7px 0;
+}
+.dialog {
+  margin: 10px 0 16px;
+  padding: 10px 12px;
+  border: 1px solid #f0d590;
+  border-left: 5px solid var(--gold);
+  background: #fff8df;
+  border-radius: 7px;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+.dialog p { margin: 4px 0; }
+.diagram {
+  border: 1px solid var(--line);
+  background: #fbfdfe;
+  padding: 12px;
+  border-radius: 8px;
+  margin: 12px 0 16px;
+}
+.weeks { display: grid; grid-template-columns: repeat(6, 1fr); gap: 7px; }
+.weeks div { background: #fff4c9; border: 1px solid #efd27d; border-radius: 7px; padding: 8px; min-height: 112px; display: flex; flex-direction: column; gap: 6px; }
+.weeks b { display: inline-grid; place-items: center; width: 24px; height: 24px; background: var(--blue-deep); color: white; border-radius: 50%; }
+.weeks span { font-size: 9.2pt; font-weight: 700; }
+.weeks small { margin-top: auto; color: var(--muted); }
+.flow-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 8px; counter-reset: step; padding: 0; margin: 8px 0 10px; list-style: none; }
+.flow-list li { background: #eef8fb; border: 1px solid #c9dfe7; border-left: 5px solid var(--orange); padding: 8px 9px; border-radius: 7px; font-size: 10pt; }
+pre { white-space: pre-wrap; overflow-x: auto; background: #263238; color: #f8fbfc; padding: 10px; border-radius: 7px; font-size: 9pt; }
+pre code { background: transparent; border: 0; color: inherit; padding: 0; }
+.avoid-break, table, blockquote { page-break-inside: avoid; break-inside: avoid; }
+@page { size: A4; margin: 10mm; }
+@media (max-width: 760px) {
+  .header-inner { align-items: flex-start; flex-direction: column; }
+  .print-btn { width: 100%; }
+  .weeks { grid-template-columns: 1fr 1fr; }
+  table { font-size: 9.5pt; }
+  .verb-table table { font-size: 8pt; }
+}
+@media print {
+  body { background: white; font-size: 11pt; color: #111; }
+  .sticky-header { position: static; background: white; border-bottom: 2px solid #9ecfe0; }
+  .header-inner, main { max-width: none; padding-left: 0; padding-right: 0; margin-left: 0; margin-right: 0; }
+  .print-btn, .quick-nav { display: none !important; }
+  .section { box-shadow: none; border: 0; margin: 0 0 8mm; border-radius: 0; page-break-inside: auto; }
+  summary { padding: 4mm 0 2mm; background: white; border-bottom: 2px solid #f0c25f; color: #173d4c; cursor: default; }
+  summary::after { content: "" !important; }
+  .section-body { padding: 3mm 0 0; }
+  details, details[open] { display: block; }
+  table { font-size: 8.5pt; }
+  .verb-table table { font-size: 6.7pt; line-height: 1.18; }
+  th, td { padding: 3px 4px; }
+  .table-wrap { overflow: visible; page-break-inside: avoid; break-inside: avoid; }
+  .fr, code { background: #fff4cb !important; border-color: #d9bd69; }
+  .weeks { grid-template-columns: repeat(3, 1fr); }
+  .weeks div { min-height: 0; }
+  a { color: inherit; text-decoration: none; }
+}
+</style>
+</head>
+<body>
+<header class="sticky-header">
+  <div class="header-inner">
+    <div>
+      <h1>Шпаргалка по TCF для перехода от A2 к B1</h1>
+      <p class="subtitle">Печатная шпаргалка A4 для Roman: A2 → B1, TCF écrit + oral</p>
+    </div>
+    <button class="print-btn" type="button" onclick="window.print()">Печать A4</button>
+  </div>
+</header>
+<main>
+  <nav class="quick-nav" aria-label="Разделы"><a href="#section-1">Краткое резюме</a>
+<a href="#section-2">Где быстрее всего растет балл</a>
+<a href="#section-3">Словарь и готовые фразы</a>
+<a href="#section-4">Глаголы и грамматика</a>
+<a href="#section-5">Стратегии для письма и устной речи</a>
+<a href="#section-6">Одностраничная шпаргалка и график запоминания</a>
+<a href="#section-7">Ограничения</a></nav>
+  <details class="section" open id="section-1">
+  <summary><span>Краткое резюме</span></summary>
+  <div class="section-body"><p>Эта шпаргалка ориентирована прежде всего на классический формат TCF tout public, TCF Canada и TCF Québec: в письменной части там три задания на 60 минут, а в устной — три задания примерно на 12 минут, включая 2 минуты подготовки ко второй устной задаче. Для TCF IRN структура и время иные, поэтому ниже я сознательно строю материал вокруг формата <code class="fr">3 письменных задачи + 3 устных задачи</code>, который лучше всего совпадает с вашим запросом про письменную и устную части. <span class="cite">источники: turn21search0, turn21search4, turn21search11, turn30view0, turn31view0</span></p>
+<p>Если у вас сейчас диапазон между A2 и B1 и цель — «выжать максимум» из TCF, то самый высокий прирост балла обычно дают не редкие грамматические тонкости, а пять вещей: точное выполнение коммуникативной задачи, устойчивый запас повседневной лексики, уверенное владение несколькими продуктивными временами, связки для логики речи и умение выкручиваться, когда не хватает слова. Это напрямую соотносится с тем, как во Франции оценивают TCF: по лингвистическим, прагматическим и социолингвистическим критериям, включая словарь, грамматику, связность, развитие темы, взаимодействие и адекватность ситуации общения. <span class="cite">источники: turn31view0, turn21search24</span></p>
+<p>С точки зрения дескрипторов CEFR, на A2 от вас ждут короткие связанные фразы о повседневной жизни, простые объяснения и базовые причины с <code class="fr">et</code>, <code class="fr">mais</code>, <code class="fr">parce que</code>, а на B1 — уже линейно организованный текст, короткую аргументацию, обмен информацией в обычных жизненных ситуациях и спонтанное высказывание по знакомой теме. Поэтому для быстрого роста выгоднее не «учить всё подряд», а довести до автоматизма шаблоны: <strong>мнение → причина → пример → вывод</strong>, плюс базовые темы повседневности. <span class="cite">источники: turn19view0, turn20view2, turn20view3</span></p></div>
+</details><details class="section" open id="section-2">
+  <summary><span>Где быстрее всего растет балл</span></summary>
+  <div class="section-body"><p>Ниже — не просто список тем, а приоритеты по отдаче именно для TCF. Я исхожу из официального описания задач и критериев оценивания, а также из дескрипторов A2–B1: грамматика важна, но в продуктивных заданиях особенно ценится способность <strong>выполнить задачу</strong>, <strong>организовать речь</strong> и <strong>оставаться понятным</strong>. <span class="cite">источники: turn31view0, turn20view2, turn20view3, turn19view0</span></p>
+<div class="table-wrap "><table>
+<thead><tr><th>Приоритет</th><th>Что дает балл</th><th>Что довести до автоматизма</th></tr></thead>
+<tbody>
+<tr><td>Очень высокий</td><td>Точное попадание в роль, адресата и цель</td><td>В каждом ответе за 10 секунд определять: <strong>кому</strong>, <strong>зачем</strong>, <strong>в каком тоне</strong></td></tr>
+<tr><td>Очень высокий</td><td>Связность и логика</td><td>Связки <code class="fr">d’abord</code>, <code class="fr">ensuite</code>, <code class="fr">parce que</code>, <code class="fr">mais</code>, <code class="fr">donc</code>, <code class="fr">en revanche</code>, <code class="fr">pour conclure</code></td></tr>
+<tr><td>Очень высокий</td><td>Общая продуктивность</td><td>25 самых частых глаголов в 7 нужных рамках: présent, passé composé, imparfait, futur proche, futur simple, conditionnel présent, impératif</td></tr>
+<tr><td>Высокий</td><td>Умение выразить мнение</td><td>Формула: <code class="fr">À mon avis... / Je pense que... / Je trouve que...</code> + 1 причина + 1 пример</td></tr>
+<tr><td>Высокий</td><td>Компенсация провалов в словаре</td><td><code class="fr">Comment dire...</code>, <code class="fr">c’est une sorte de...</code>, <code class="fr">c’est le truc pour...</code>, <code class="fr">ça sert à...</code></td></tr>
+<tr><td>Высокий</td><td>Стабильная бытовая лексика</td><td>Приветствия, режим дня, поездки, еда, покупки, здоровье, эмоции, мнения, соединители</td></tr>
+<tr><td>Средний, но заметный</td><td>Чистота звучания</td><td>Вопросительная интонация, носовые гласные, частые liaisons, аккуратные окончания</td></tr>
+</tbody></table></div>
+<p>Практический вывод для вашей цели такой: лучше сказать <strong>простее, но связнее и точнее по задаче</strong>, чем пытаться звучать «красиво», но распасться по логике. Это особенно важно, потому что на B1 дескрипторы отдельно отмечают умение вести разговор на знакомые темы, задавать вопросы, продолжать общение и связывать элементы в последовательный дискурс, а в TCF копия может упасть очень низко, если не соблюдены задание, объем или тема. <span class="cite">источники: turn20view3, turn31view0, turn30view0</span></p></div>
+</details><details class="section" open id="section-3">
+  <summary><span>Словарь и готовые фразы</span></summary>
+  <div class="section-body"><p>Подбор ниже — это синтез трех опор: официальных повседневных тем TCF, дескрипторов A2–B1 и частотных списков/ресурсов для французского, где среди самых частых глаголов и тем стабильно доминируют повседневные коммуникации, поездки, еда, здоровье и базовые социальные взаимодействия. TV5MONDE для начального и промежуточного уровней организует обучение почти по тем же темам: приветствия, еда, здоровье, путешествия, транспорт, мнения, эмоции и повседневная жизнь. <span class="cite">источники: turn31view0, turn20view3, turn15search0, turn15search2, turn43search6, turn43search1, turn42search16</span></p>
+<div class="table-wrap "><table>
+<thead><tr><th>Тема</th><th>Ядро лексики</th><th>Полезные выражения</th><th>Мини-примеры</th></tr></thead>
+<tbody>
+<tr><td>Приветствия</td><td><code class="fr">bonjour</code>, <code class="fr">bonsoir</code>, <code class="fr">salut</code>, <code class="fr">merci</code>, <code class="fr">s’il vous plaît</code>, <code class="fr">excusez-moi</code></td><td><code class="fr">Comment allez-vous ?</code>, <code class="fr">Ça va ?</code>, <code class="fr">Enchanté(e).</code>, <code class="fr">À bientôt.</code></td><td><code class="fr">Bonjour, je m’appelle Nina.</code> <code class="fr">Excusez-moi, vous pouvez m’aider ?</code></td></tr>
+<tr><td>Режим дня</td><td><code class="fr">se lever</code>, <code class="fr">se préparer</code>, <code class="fr">travailler</code>, <code class="fr">étudier</code>, <code class="fr">rentrer</code>, <code class="fr">se coucher</code></td><td><code class="fr">d’habitude</code>, <code class="fr">tous les jours</code>, <code class="fr">le matin</code>, <code class="fr">le soir</code></td><td><code class="fr">D’habitude, je me lève à sept heures.</code> <code class="fr">Le soir, je rentre tard.</code></td></tr>
+<tr><td>Поездки</td><td><code class="fr">un billet</code>, <code class="fr">un train</code>, <code class="fr">un bus</code>, <code class="fr">partir</code>, <code class="fr">arriver</code>, <code class="fr">un retard</code></td><td><code class="fr">aller à</code>, <code class="fr">venir de</code>, <code class="fr">prendre le train</code>, <code class="fr">demander son chemin</code></td><td><code class="fr">Je voudrais acheter un billet pour Lyon.</code> <code class="fr">Le train est en retard.</code></td></tr>
+<tr><td>Еда</td><td><code class="fr">le petit déjeuner</code>, <code class="fr">déjeuner</code>, <code class="fr">dîner</code>, <code class="fr">du pain</code>, <code class="fr">de l’eau</code>, <code class="fr">un plat</code></td><td><code class="fr">Je voudrais...</code>, <code class="fr">Ça fait combien ?</code>, <code class="fr">J’aime / je n’aime pas</code></td><td><code class="fr">Au petit déjeuner, je prends du café.</code> <code class="fr">Je voudrais un plat du jour.</code></td></tr>
+<tr><td>Покупки</td><td><code class="fr">un magasin</code>, <code class="fr">le prix</code>, <code class="fr">la taille</code>, <code class="fr">essayer</code>, <code class="fr">payer</code>, <code class="fr">la carte</code></td><td><code class="fr">C’est combien ?</code>, <code class="fr">Je peux essayer ?</code>, <code class="fr">Je cherche...</code></td><td><code class="fr">Je cherche une veste simple.</code> <code class="fr">Je peux payer par carte ?</code></td></tr>
+<tr><td>Здоровье</td><td><code class="fr">être malade</code>, <code class="fr">avoir mal</code>, <code class="fr">un médicament</code>, <code class="fr">une pharmacie</code>, <code class="fr">un rendez-vous</code>, <code class="fr">se sentir</code></td><td><code class="fr">Il faut...</code>, <code class="fr">J’ai mal à...</code>, <code class="fr">Je ne me sens pas bien.</code></td><td><code class="fr">J’ai mal à la tête depuis hier.</code> <code class="fr">Il me faut un rendez-vous chez le médecin.</code></td></tr>
+<tr><td>Эмоции</td><td><code class="fr">content(e)</code>, <code class="fr">fatigué(e)</code>, <code class="fr">stressé(e)</code>, <code class="fr">inquiet / inquiète</code>, <code class="fr">surpris(e)</code>, <code class="fr">fier / fière</code></td><td><code class="fr">être de bonne humeur</code>, <code class="fr">avoir peur</code>, <code class="fr">être en colère</code></td><td><code class="fr">Je suis un peu stressé avant l’examen.</code> <code class="fr">Elle est fière de son travail.</code></td></tr>
+<tr><td>Мнения</td><td><code class="fr">penser</code>, <code class="fr">croire</code>, <code class="fr">trouver</code>, <code class="fr">préférer</code>, <code class="fr">être d’accord</code>, <code class="fr">être contre</code></td><td><code class="fr">À mon avis...</code>, <code class="fr">Je pense que...</code>, <code class="fr">Je trouve que...</code>, <code class="fr">Je préfère...</code></td><td><code class="fr">À mon avis, c’est une bonne idée.</code> <code class="fr">Je préfère voyager en train.</code></td></tr>
+<tr><td>Связки</td><td><code class="fr">d’abord</code>, <code class="fr">puis</code>, <code class="fr">ensuite</code>, <code class="fr">mais</code>, <code class="fr">parce que</code>, <code class="fr">donc</code></td><td><code class="fr">en fait</code>, <code class="fr">par exemple</code>, <code class="fr">en revanche</code>, <code class="fr">pour conclure</code></td><td><code class="fr">D’abord, je présente le problème.</code> <code class="fr">Ensuite, j’explique mon opinion.</code></td></tr>
+</tbody></table></div>
+<p>Чтобы эта лексика реально «работала» на экзамене, запоминайте не отдельные слова, а <strong>мини-пакеты</strong>: слово + типичный глагол + типичное дополнение. Например: <code class="fr">prendre le train</code>, <code class="fr">avoir mal à la tête</code>, <code class="fr">payer par carte</code>, <code class="fr">être en retard</code>, <code class="fr">donner son opinion</code>, <code class="fr">faire les courses</code>. Именно такие устойчивые пары гораздо легче вспоминаются под стрессом. Это совпадает и с логикой CEFR B1: уметь обмениваться фактической информацией, объяснять трудность, говорить о семье, досуге, поездках, работе и ежедневных ситуациях. <span class="cite">источники: turn20view3, turn19view0</span></p>
+<p>Для беглости и связности особенно выгодны готовые маркеры. TV5MONDE отдельно выносит блоки про выражение мнения, структурирование сообщения, организацию речи, предложение/совет и нюансировку оценки; CEFR B1 отдельно подчеркивает ценность связок, линейного развертывания и компенсации нехватки слов. <span class="cite">источники: turn41search0, turn41search4, turn42search0, turn41search2, turn20view2</span></p>
+<div class="table-wrap "><table>
+<thead><tr><th>Функция</th><th>Готовая фраза</th><th>Когда использовать</th><th>Комментарий</th></tr></thead>
+<tbody>
+<tr><td>Начать ответ</td><td><code class="fr">Pour commencer...</code></td><td>Любой устный или письменный ответ</td><td>Нейтрально и безопасно</td></tr>
+<tr><td>Обозначить тему</td><td><code class="fr">Je vais parler de...</code></td><td>Устное задание 3, небольшое эссе</td><td>Сразу показывает структуру</td></tr>
+<tr><td>Дать мнение</td><td><code class="fr">À mon avis...</code></td><td>Когда надо занять позицию</td><td>Очень удобно для B1</td></tr>
+<tr><td>Более лично</td><td><code class="fr">Personnellement...</code></td><td>Форум, устное мнение</td><td>Чуть более разговорно</td></tr>
+<tr><td>Смягчить категоричность</td><td><code class="fr">Je dirais que...</code></td><td>Если не уверены</td><td>Хорошая «мягкая» подача</td></tr>
+<tr><td>Честно обозначить позицию</td><td><code class="fr">Pour être honnête...</code></td><td>Устная часть, мнение</td><td>Не злоупотреблять</td></tr>
+<tr><td>Добавить идею</td><td><code class="fr">En plus...</code></td><td>После первой причины</td><td>Проще, чем сложные союзы</td></tr>
+<tr><td>Пояснить</td><td><code class="fr">En fait...</code></td><td>Когда уточняете или исправляете</td><td>Очень частотная связка</td></tr>
+<tr><td>Привести пример</td><td><code class="fr">Par exemple...</code></td><td>После мнения или аргумента</td><td>Самый дешевый способ «развить» ответ</td></tr>
+<tr><td>Сбалансировать</td><td><code class="fr">D’un côté..., de l’autre...</code></td><td>Сравнение плюсов и минусов</td><td>Особенно полезно в задании на мнение</td></tr>
+<tr><td>Противопоставить</td><td><code class="fr">En revanche...</code></td><td>Когда даете контраргумент</td><td>Чуть сильнее, чем <code class="fr">mais</code></td></tr>
+<tr><td>Причина</td><td><code class="fr">Parce que...</code></td><td>A2–B1 must-have</td><td>Самая нужная связка</td></tr>
+<tr><td>Следствие</td><td><code class="fr">Donc...</code></td><td>После причины</td><td>Коротко и ясно</td></tr>
+<tr><td>Сомнение</td><td><code class="fr">Je ne suis pas sûr(e), mais...</code></td><td>Если не помните точного слова/факта</td><td>Лучше, чем замолчать</td></tr>
+<tr><td>Перефразирование</td><td><code class="fr">Comment dire...</code></td><td>Когда ищете слово</td><td>Устно — очень полезно</td></tr>
+<tr><td>Обход нехватки слова</td><td><code class="fr">C’est une sorte de...</code></td><td>Для определения предмета</td><td>Отличная стратегия компенсации</td></tr>
+<tr><td>Функция предмета</td><td><code class="fr">Ça sert à...</code></td><td>Когда не знаете существительное</td><td>Часто спасает в устной части</td></tr>
+<tr><td>Завершение</td><td><code class="fr">Pour conclure...</code></td><td>Последняя фраза</td><td>Показывает контроль структуры</td></tr>
+<tr><td>Краткий вывод</td><td><code class="fr">En résumé...</code></td><td>Устно и письменно</td><td>Особенно хорошо в мнении</td></tr>
+</tbody></table></div>
+<p>Короткие диалоговые микромодели, которые стоит выучить почти дословно:</p>
+<h3>Диалог про поездку</h3>
+<div class="dialog"><p>— <code class="fr">Bonjour madame, je voudrais aller à Strasbourg ce week-end.</code>  </p>
+<p>— <code class="fr">Vous préférez le train ou le bus ?</code>  </p>
+<p>— <code class="fr">Je préfère le train, parce que c’est plus rapide.</code>  </p>
+<p>— <code class="fr">Vous partez quand ?</code>  </p>
+<p>— <code class="fr">Samedi matin, si possible.</code>  </p>
+<p>— <code class="fr">Très bien. Il y a un train à huit heures dix.</code>  </p>
+<p>— <code class="fr">Parfait. Est-ce qu’il y a une réduction étudiante ?</code>  </p>
+<p>— <code class="fr">Oui, si vous avez votre carte.</code></p></div>
+<h3>Диалог про совет</h3>
+<div class="dialog"><p>— <code class="fr">Bonjour, je voudrais organiser une sortie culturelle.</code>  </p>
+<p>— <code class="fr">Vous aimez plutôt les musées ou les concerts ?</code>  </p>
+<p>— <code class="fr">J’aime surtout la photo et je n’ai pas un gros budget.</code>  </p>
+<p>— <code class="fr">Alors, je vous conseille l’exposition au centre-ville.</code>  </p>
+<p>— <code class="fr">C’est loin d’ici ?</code>  </p>
+<p>— <code class="fr">Non, à dix minutes à pied.</code>  </p>
+<p>— <code class="fr">Merci beaucoup, c’est exactement ce que je cherche.</code>  </p>
+<p>— <code class="fr">Avec plaisir.</code></p></div></div>
+</details><details class="section" open id="section-4">
+  <summary><span>Глаголы и грамматика</span></summary>
+  <div class="section-body"><p>Ниже — минимальный глагольный каркас, который реально покрывает большую часть повседневной речи в диапазоне A2–B1. Формулы времен и морфология сверены по Le Robert и его грамматическим справкам: présent, imparfait, passé composé, futur proche, futur simple, conditionnel présent и impératif. TV5MONDE отдельно подтверждает базовые схемы для imparfait, passé composé и futur proche в обучении уровней A2–B1. <span class="cite">источники: turn38view0, turn39view1, turn39view2, turn39view3, turn36view2, turn40search7, turn40search9</span></p>
+<p>Во всех таблицах ниже порядок лиц один и тот же: <strong><code class="fr">je | tu | il/elle | nous | vous | ils/elles</code></strong>. В колонке <strong>Imp.</strong> порядок такой: <strong><code class="fr">tu | nous | vous</code></strong>. Для глаголов, которые в <code class="fr">passé composé</code> берут <code class="fr">être</code>, я даю базовую мужскую форму; в реальном письме и устной части согласуйте причастие: <code class="fr">allée</code>, <code class="fr">parties</code>, <code class="fr">sorties</code>, <code class="fr">venues</code> и т. д. Для <code class="fr">sortir</code> в таблице стоит повседневное непереходное значение <code class="fr">être sorti</code>; если есть прямое дополнение, возможна модель <code class="fr">avoir</code> (<code class="fr">j’ai sorti la poubelle</code>). Для <code class="fr">payer</code> нормативно допустимы двойные формы (<code class="fr">paie/paye</code>, <code class="fr">paierai/payerai</code>), а для <code class="fr">acheter</code> и <code class="fr">appeler</code> важно запомнить орфографические изменения в настоящем и будущем. <span class="cite">источники: turn36view2, turn36view3, turn47view3, turn47view0, turn48view0, turn48view1</span></p>
+<div class="table-wrap "><table>
+<thead><tr><th>Время</th><th>Короткая формула</th><th>Модельные окончания</th><th>Что запомнить</th></tr></thead>
+<tbody>
+<tr><td>Présent <code class="fr">-er</code></td><td>основа + окончания</td><td><code class="fr">-e, -es, -e, -ons, -ez, -ent</code></td><td><code class="fr">parler</code></td></tr>
+<tr><td>Présent <code class="fr">-ir</code> 2 группы</td><td>основа + окончания</td><td><code class="fr">-is, -is, -it, -issons, -issez, -issent</code></td><td><code class="fr">finir</code></td></tr>
+<tr><td>Imparfait</td><td><code class="fr">nous</code>-форма без <code class="fr">-ons</code> + окончания</td><td><code class="fr">-ais, -ais, -ait, -ions, -iez, -aient</code></td><td><code class="fr">nous parlons → je parlais</code></td></tr>
+<tr><td>Passé composé</td><td><code class="fr">avoir/être</code> в présent + participe passé</td><td>формы зависят от вспом. глагола</td><td><code class="fr">j’ai parlé</code>, <code class="fr">je suis parti</code></td></tr>
+<tr><td>Futur proche</td><td><code class="fr">aller</code> в présent + infinitif</td><td>—</td><td><code class="fr">je vais parler</code></td></tr>
+<tr><td>Futur simple</td><td>infinitif + окончания; для <code class="fr">-re</code> убрать финальное <code class="fr">e</code></td><td><code class="fr">-ai, -as, -a, -ons, -ez, -ont</code></td><td><code class="fr">parlerai</code>, <code class="fr">attendrai</code></td></tr>
+<tr><td>Conditionnel présent</td><td>основа futur simple + окончания imparfait</td><td><code class="fr">-ais, -ais, -ait, -ions, -iez, -aient</code></td><td><code class="fr">je parlerais</code>, <code class="fr">je verrais</code></td></tr>
+<tr><td>Impératif</td><td>формы <code class="fr">tu / nous / vous</code> без подлежащего</td><td>обычно как présent; у <code class="fr">-er</code> исчезает <code class="fr">-s</code> в <code class="fr">tu</code></td><td><code class="fr">parle</code>, <code class="fr">parlons</code>, <code class="fr">parlez</code></td></tr>
+</tbody></table></div>
+<div class="table-wrap "><table>
+<thead><tr><th>Глагол</th><th>Нестандартная основа</th></tr></thead>
+<tbody>
+<tr><td>être</td><td><code class="fr">ser-</code></td></tr>
+<tr><td>avoir</td><td><code class="fr">aur-</code></td></tr>
+<tr><td>aller</td><td><code class="fr">ir-</code></td></tr>
+<tr><td>faire</td><td><code class="fr">fer-</code></td></tr>
+<tr><td>pouvoir</td><td><code class="fr">pourr-</code></td></tr>
+<tr><td>devoir</td><td><code class="fr">devr-</code></td></tr>
+<tr><td>vouloir</td><td><code class="fr">voudr-</code></td></tr>
+<tr><td>venir</td><td><code class="fr">viendr-</code></td></tr>
+<tr><td>voir</td><td><code class="fr">verr-</code></td></tr>
+<tr><td>savoir</td><td><code class="fr">saur-</code></td></tr>
+<tr><td>connaître</td><td><code class="fr">connaîtr-</code></td></tr>
+<tr><td>mettre</td><td><code class="fr">mettr-</code></td></tr>
+<tr><td>lire</td><td><code class="fr">lir-</code></td></tr>
+<tr><td>écrire</td><td><code class="fr">écrir-</code></td></tr>
+<tr><td>prendre</td><td><code class="fr">prendr-</code></td></tr>
+<tr><td>boire</td><td><code class="fr">boir-</code></td></tr>
+<tr><td>acheter</td><td><code class="fr">achèt-</code> в будущих/условных формах по основной орфографии</td></tr>
+<tr><td>payer</td><td><code class="fr">paier- / payer-</code></td></tr>
+<tr><td>appeler</td><td><code class="fr">appeller-</code></td></tr>
+</tbody></table></div>
+<p>Полные формы для первой пятерки сверены по Le Robert. <span class="cite">источники: turn44view0, turn44view1, turn44view2, turn44view3, turn44view4</span></p>
+<div class="table-wrap verb-table"><table>
+<thead><tr><th>Глагол</th><th>Présent</th><th>PC</th><th>Imparfait</th><th>FP</th><th>FS</th><th>Cond. pr.</th><th>Imp.</th></tr></thead>
+<tbody>
+<tr><td>être</td><td>suis / es / est / sommes / êtes / sont</td><td>ai été / as été / a été / avons été / avez été / ont été</td><td>étais / étais / était / étions / étiez / étaient</td><td>vais être / vas être / va être / allons être / allez être / vont être</td><td>serai / seras / sera / serons / serez / seront</td><td>serais / serais / serait / serions / seriez / seraient</td><td>sois / soyons / soyez</td></tr>
+<tr><td>avoir</td><td>ai / as / a / avons / avez / ont</td><td>ai eu / as eu / a eu / avons eu / avez eu / ont eu</td><td>avais / avais / avait / avions / aviez / avaient</td><td>vais avoir / vas avoir / va avoir / allons avoir / allez avoir / vont avoir</td><td>aurai / auras / aura / aurons / aurez / auront</td><td>aurais / aurais / aurait / aurions / auriez / auraient</td><td>aie / ayons / ayez</td></tr>
+<tr><td>aller</td><td>vais / vas / va / allons / allez / vont</td><td>suis allé / es allé / est allé / sommes allés / êtes allés / sont allés</td><td>allais / allais / allait / allions / alliez / allaient</td><td>vais aller / vas aller / va aller / allons aller / allez aller / vont aller</td><td>irai / iras / ira / irons / irez / iront</td><td>irais / irais / irait / irions / iriez / iraient</td><td>va / allons / allez</td></tr>
+<tr><td>faire</td><td>fais / fais / fait / faisons / faites / font</td><td>ai fait / as fait / a fait / avons fait / avez fait / ont fait</td><td>faisais / faisais / faisait / faisions / faisiez / faisaient</td><td>vais faire / vas faire / va faire / allons faire / allez faire / vont faire</td><td>ferai / feras / fera / ferons / ferez / feront</td><td>ferais / ferais / ferait / ferions / feriez / feraient</td><td>fais / faisons / faites</td></tr>
+<tr><td>pouvoir</td><td>peux / peux / peut / pouvons / pouvez / peuvent</td><td>ai pu / as pu / a pu / avons pu / avez pu / ont pu</td><td>pouvais / pouvais / pouvait / pouvions / pouviez / pouvaient</td><td>vais pouvoir / vas pouvoir / va pouvoir / allons pouvoir / allez pouvoir / vont pouvoir</td><td>pourrai / pourras / pourra / pourrons / pourrez / pourront</td><td>pourrais / pourrais / pourrait / pourrions / pourriez / pourraient</td><td>— / — / —</td></tr>
+</tbody></table></div>
+<p>Формы для следующей пятерки сверены по Le Robert. <span class="cite">источники: turn44view5, turn44view6, turn44view7, turn44view8, turn44view9</span></p>
+<div class="table-wrap verb-table"><table>
+<thead><tr><th>Глагол</th><th>Présent</th><th>PC</th><th>Imparfait</th><th>FP</th><th>FS</th><th>Cond. pr.</th><th>Imp.</th></tr></thead>
+<tbody>
+<tr><td>devoir</td><td>dois / dois / doit / devons / devez / doivent</td><td>ai dû / as dû / a dû / avons dû / avez dû / ont dû</td><td>devais / devais / devait / devions / deviez / devaient</td><td>vais devoir / vas devoir / va devoir / allons devoir / allez devoir / vont devoir</td><td>devrai / devras / devra / devrons / devrez / devront</td><td>devrais / devrais / devrait / devrions / devriez / devraient</td><td>— / — / —</td></tr>
+<tr><td>vouloir</td><td>veux / veux / veut / voulons / voulez / veulent</td><td>ai voulu / as voulu / a voulu / avons voulu / avez voulu / ont voulu</td><td>voulais / voulais / voulait / voulions / vouliez / voulaient</td><td>vais vouloir / vas vouloir / va vouloir / allons vouloir / allez vouloir / vont vouloir</td><td>voudrai / voudras / voudra / voudrons / voudrez / voudront</td><td>voudrais / voudrais / voudrait / voudrions / voudriez / voudraient</td><td>veuille / veuillons / veuillez</td></tr>
+<tr><td>prendre</td><td>prends / prends / prend / prenons / prenez / prennent</td><td>ai pris / as pris / a pris / avons pris / avez pris / ont pris</td><td>prenais / prenais / prenait / prenions / preniez / prenaient</td><td>vais prendre / vas prendre / va prendre / allons prendre / allez prendre / vont prendre</td><td>prendrai / prendras / prendra / prendrons / prendrez / prendront</td><td>prendrais / prendrais / prendrait / prendrions / prendriez / prendraient</td><td>prends / prenons / prenez</td></tr>
+<tr><td>venir</td><td>viens / viens / vient / venons / venez / viennent</td><td>suis venu / es venu / est venu / sommes venus / êtes venus / sont venus</td><td>venais / venais / venait / venions / veniez / venaient</td><td>vais venir / vas venir / va venir / allons venir / allez venir / vont venir</td><td>viendrai / viendras / viendra / viendrons / viendrez / viendront</td><td>viendrais / viendrais / viendrait / viendrions / viendriez / viendraient</td><td>viens / venons / venez</td></tr>
+<tr><td>voir</td><td>vois / vois / voit / voyons / voyez / voient</td><td>ai vu / as vu / a vu / avons vu / avez vu / ont vu</td><td>voyais / voyais / voyait / voyions / voyiez / voyaient</td><td>vais voir / vas voir / va voir / allons voir / allez voir / vont voir</td><td>verrai / verras / verra / verrons / verrez / verront</td><td>verrais / verrais / verrait / verrions / verriez / verraient</td><td>vois / voyons / voyez</td></tr>
+</tbody></table></div>
+<p>Формы для третьей пятерки сверены по Le Robert. <span class="cite">источники: turn45view0, turn45view1, turn45view2, turn45view3, turn45view4</span></p>
+<div class="table-wrap verb-table"><table>
+<thead><tr><th>Глагол</th><th>Présent</th><th>PC</th><th>Imparfait</th><th>FP</th><th>FS</th><th>Cond. pr.</th><th>Imp.</th></tr></thead>
+<tbody>
+<tr><td>savoir</td><td>sais / sais / sait / savons / savez / savent</td><td>ai su / as su / a su / avons su / avez su / ont su</td><td>savais / savais / savait / savions / saviez / savaient</td><td>vais savoir / vas savoir / va savoir / allons savoir / allez savoir / vont savoir</td><td>saurai / sauras / saura / saurons / saurez / sauront</td><td>saurais / saurais / saurait / saurions / sauriez / sauraient</td><td>sache / sachons / sachez</td></tr>
+<tr><td>connaître</td><td>connais / connais / connaît / connaissons / connaissez / connaissent</td><td>ai connu / as connu / a connu / avons connu / avez connu / ont connu</td><td>connaissais / connaissais / connaissait / connaissions / connaissiez / connaissaient</td><td>vais connaître / vas connaître / va connaître / allons connaître / allez connaître / vont connaître</td><td>connaîtrai / connaîtras / connaîtra / connaîtrons / connaîtrez / connaîtront</td><td>connaîtrais / connaîtrais / connaîtrait / connaîtrions / connaîtriez / connaîtraient</td><td>connais / connaissons / connaissez</td></tr>
+<tr><td>dire</td><td>dis / dis / dit / disons / dites / disent</td><td>ai dit / as dit / a dit / avons dit / avez dit / ont dit</td><td>disais / disais / disait / disions / disiez / disaient</td><td>vais dire / vas dire / va dire / allons dire / allez dire / vont dire</td><td>dirai / diras / dira / dirons / direz / diront</td><td>dirais / dirais / dirait / dirions / diriez / diraient</td><td>dis / disons / dites</td></tr>
+<tr><td>parler</td><td>parle / parles / parle / parlons / parlez / parlent</td><td>ai parlé / as parlé / a parlé / avons parlé / avez parlé / ont parlé</td><td>parlais / parlais / parlait / parlions / parliez / parlaient</td><td>vais parler / vas parler / va parler / allons parler / allez parler / vont parler</td><td>parlerai / parleras / parlera / parlerons / parlerez / parleront</td><td>parlerais / parlerais / parlerait / parlerions / parleriez / parleraient</td><td>parle / parlons / parlez</td></tr>
+<tr><td>finir</td><td>finis / finis / finit / finissons / finissez / finissent</td><td>ai fini / as fini / a fini / avons fini / avez fini / ont fini</td><td>finissais / finissais / finissait / finissions / finissiez / finissaient</td><td>vais finir / vas finir / va finir / allons finir / allez finir / vont finir</td><td>finirai / finiras / finira / finirons / finirez / finiront</td><td>finirais / finirais / finirait / finirions / finiriez / finiraient</td><td>finis / finissons / finissez</td></tr>
+</tbody></table></div>
+<p>Формы для четвертой пятерки сверены по Le Robert; для <code class="fr">sortir</code> учтена повседневная непереходная модель с <code class="fr">être</code>. <span class="cite">источники: turn45view5, turn45view6, turn45view7, turn45view8, turn45view9, turn47view3</span></p>
+<div class="table-wrap verb-table"><table>
+<thead><tr><th>Глагол</th><th>Présent</th><th>PC</th><th>Imparfait</th><th>FP</th><th>FS</th><th>Cond. pr.</th><th>Imp.</th></tr></thead>
+<tbody>
+<tr><td>mettre</td><td>mets / mets / met / mettons / mettez / mettent</td><td>ai mis / as mis / a mis / avons mis / avez mis / ont mis</td><td>mettais / mettais / mettait / mettions / mettiez / mettaient</td><td>vais mettre / vas mettre / va mettre / allons mettre / allez mettre / vont mettre</td><td>mettrai / mettras / mettra / mettrons / mettrez / mettront</td><td>mettrais / mettrais / mettrait / mettrions / mettriez / mettraient</td><td>mets / mettons / mettez</td></tr>
+<tr><td>lire</td><td>lis / lis / lit / lisons / lisez / lisent</td><td>ai lu / as lu / a lu / avons lu / avez lu / ont lu</td><td>lisais / lisais / lisait / lisions / lisiez / lisaient</td><td>vais lire / vas lire / va lire / allons lire / allez lire / vont lire</td><td>lirai / liras / lira / lirons / lirez / liront</td><td>lirais / lirais / lirait / lirions / liriez / liraient</td><td>lis / lisons / lisez</td></tr>
+<tr><td>écrire</td><td>écris / écris / écrit / écrivons / écrivez / écrivent</td><td>ai écrit / as écrit / a écrit / avons écrit / avez écrit / ont écrit</td><td>écrivais / écrivais / écrivait / écrivions / écriviez / écrivaient</td><td>vais écrire / vas écrire / va écrire / allons écrire / allez écrire / vont écrire</td><td>écrirai / écriras / écrira / écrirons / écrirez / écriront</td><td>écrirais / écrirais / écrirait / écririons / écririez / écriraient</td><td>écris / écrivons / écrivez</td></tr>
+<tr><td>sortir</td><td>sors / sors / sort / sortons / sortez / sortent</td><td>suis sorti / es sorti / est sorti / sommes sortis / êtes sortis / sont sortis</td><td>sortais / sortais / sortait / sortions / sortiez / sortaient</td><td>vais sortir / vas sortir / va sortir / allons sortir / allez sortir / vont sortir</td><td>sortirai / sortiras / sortira / sortirons / sortirez / sortiront</td><td>sortirais / sortirais / sortirait / sortirions / sortiriez / sortiraient</td><td>sors / sortons / sortez</td></tr>
+<tr><td>partir</td><td>pars / pars / part / partons / partez / partent</td><td>suis parti / es parti / est parti / sommes partis / êtes partis / sont partis</td><td>partais / partais / partait / partions / partiez / partaient</td><td>vais partir / vas partir / va partir / allons partir / allez partir / vont partir</td><td>partirai / partiras / partira / partirons / partirez / partiront</td><td>partirais / partirais / partirait / partirions / partiriez / partiraient</td><td>pars / partons / partez</td></tr>
+</tbody></table></div>
+<p>Формы для последней пятерки сверены по Le Robert; особое внимание — <code class="fr">acheter</code>, <code class="fr">payer</code>, <code class="fr">appeler</code>. <span class="cite">источники: turn46view0, turn46view1, turn46view2, turn46view3, turn46view4, turn47view0, turn48view0, turn48view1, turn48view2</span></p>
+<div class="table-wrap verb-table"><table>
+<thead><tr><th>Глагол</th><th>Présent</th><th>PC</th><th>Imparfait</th><th>FP</th><th>FS</th><th>Cond. pr.</th><th>Imp.</th></tr></thead>
+<tbody>
+<tr><td>boire</td><td>bois / bois / boit / buvons / buvez / boivent</td><td>ai bu / as bu / a bu / avons bu / avez bu / ont bu</td><td>buvais / buvais / buvait / buvions / buviez / buvaient</td><td>vais boire / vas boire / va boire / allons boire / allez boire / vont boire</td><td>boirai / boiras / boira / boirons / boirez / boiront</td><td>boirais / boirais / boirait / boirions / boiriez / boiraient</td><td>bois / buvons / buvez</td></tr>
+<tr><td>acheter</td><td>achète / achètes / achète / achetons / achetez / achètent</td><td>ai acheté / as acheté / a acheté / avons acheté / avez acheté / ont acheté</td><td>achetais / achetais / achetait / achetions / achetiez / achetaient</td><td>vais acheter / vas acheter / va acheter / allons acheter / allez acheter / vont acheter</td><td>achèterai / achèteras / achètera / achèterons / achèterez / achèteront</td><td>achèterais / achèterais / achèterait / achèterions / achèteriez / achèteraient</td><td>achète / achetons / achetez</td></tr>
+<tr><td>payer</td><td>paie/paye / paies/payes / paie/paye / payons / payez / paient/payent</td><td>ai payé / as payé / a payé / avons payé / avez payé / ont payé</td><td>payais / payais / payait / payions / payiez / payaient</td><td>vais payer / vas payer / va payer / allons payer / allez payer / vont payer</td><td>paierai/payerai / paieras/payeras / paiera/payera / paierons/payerons / paierez/payerez / paieront/payeront</td><td>paierais/payerais / paierais/payerais / paierait/payerait / paierions/payerions / paieriez/payeriez / paieraient/payeraient</td><td>paie/paye / payons / payez</td></tr>
+<tr><td>appeler</td><td>appelle / appelles / appelle / appelons / appelez / appellent</td><td>ai appelé / as appelé / a appelé / avons appelé / avez appelé / ont appelé</td><td>appelais / appelais / appelait / appelions / appeliez / appelaient</td><td>vais appeler / vas appeler / va appeler / allons appeler / allez appeler / vont appeler</td><td>appellerai / appelleras / appellera / appellerons / appellerez / appelleront</td><td>appellerais / appellerais / appellerait / appellerions / appelleriez / appelleraient</td><td>appelle / appelons / appelez</td></tr>
+<tr><td>attendre</td><td>attends / attends / attend / attendons / attendez / attendent</td><td>ai attendu / as attendu / a attendu / avons attendu / avez attendu / ont attendu</td><td>attendais / attendais / attendait / attendions / attendiez / attendaient</td><td>vais attendre / vas attendre / va attendre / allons attendre / allez attendre / vont attendre</td><td>attendrai / attendras / attendra / attendrons / attendrez / attendront</td><td>attendrais / attendrais / attendrait / attendrions / attendriez / attendraient</td><td>attends / attendons / attendez</td></tr>
+</tbody></table></div>
+<p>Для самого TCF вам не нужна «вся французская грамматика». Нужна короткая, надежная базовая схема. Ниже — именно она. Правила сведены по Le Robert, CEFR и опорам TV5MONDE. <span class="cite">источники: turn32view0, turn33view0, turn34view1, turn34view2, turn33view3, turn36view1, turn36view0, turn35view0, turn33view4, turn36view2, turn36view3</span></p>
+<div class="table-wrap "><table>
+<thead><tr><th>Тема</th><th>Краткое правило</th><th>Мини-пример</th></tr></thead>
+<tbody>
+<tr><td>Отрицание</td><td>В экзамене держите полную форму: <code class="fr">ne ... pas / plus / jamais</code>. В разговорной речи <code class="fr">ne</code> часто падает, но в TCF лучше не сокращать.</td><td><code class="fr">Je ne comprends pas.</code> <code class="fr">Nous ne sortons plus.</code></td></tr>
+<tr><td>Вопросы</td><td>Для безопасного стандарта используйте <code class="fr">est-ce que</code>. На устном можно и интонацией. Инверсия дает более формальный стиль.</td><td><code class="fr">Est-ce que vous pouvez répéter ?</code> <code class="fr">Vous venez demain ?</code> <code class="fr">Avez-vous une minute ?</code></td></tr>
+<tr><td>Подлежащие</td><td><code class="fr">je, tu, il/elle/on, nous, vous, ils/elles</code></td><td><code class="fr">On pense que c’est utile.</code></td></tr>
+<tr><td>COD/COI перед глаголом</td><td>Перед спрягаемым глаголом: <code class="fr">me/te/se/nous/vous</code>, <code class="fr">le/la/les</code>, <code class="fr">lui/leur</code></td><td><code class="fr">Je le vois.</code> <code class="fr">Je lui parle.</code></td></tr>
+<tr><td>Возвратные формы</td><td><code class="fr">me, te, se, nous, vous, se</code> + глагол; в <code class="fr">passé composé</code> обычно <code class="fr">être</code></td><td><code class="fr">Je me lève.</code> <code class="fr">Elle s’est préparée.</code></td></tr>
+<tr><td><code class="fr">y</code></td><td>Заменяет место или <code class="fr">à</code> + вещь/идея</td><td><code class="fr">Je vais à Paris → J’y vais.</code> <code class="fr">Tu penses à ce projet ? → Tu y penses ?</code></td></tr>
+<tr><td><code class="fr">en</code></td><td>Заменяет <code class="fr">de</code> + вещь/идея, количество, partitif/indéfini</td><td><code class="fr">Je veux du pain → J’en veux.</code> <code class="fr">Tu as deux sœurs ? → Oui, j’en ai deux.</code></td></tr>
+<tr><td>Артикли</td><td>Определенные: <code class="fr">le, la, les</code>; неопределенные: <code class="fr">un, une, des</code>; partitifs: <code class="fr">du, de la, de l’, des</code></td><td><code class="fr">Je prends du café.</code> <code class="fr">J’achète un livre.</code></td></tr>
+<tr><td>После отрицания</td><td><code class="fr">des</code> обычно становится <code class="fr">de/d’</code>; partitif тоже часто переходит в <code class="fr">de/d’</code></td><td><code class="fr">Je n’ai pas de prunes.</code> <code class="fr">Je ne bois pas de café.</code></td></tr>
+<tr><td>Согласование прилагательных</td><td>Обычно прилагательное согласуется в роде и числе с существительным/местоимением</td><td><code class="fr">un livre intéressant</code>, <code class="fr">une idée intéressante</code>, <code class="fr">des livres intéressants</code></td></tr>
+<tr><td>Сравнение</td><td><code class="fr">plus / aussi / moins + adjectif + que</code></td><td><code class="fr">Le train est plus rapide que le bus.</code></td></tr>
+<tr><td>Исключения сравнений</td><td><code class="fr">meilleur</code>, <code class="fr">pire</code>, <code class="fr">moindre</code></td><td><code class="fr">Cette solution est meilleure.</code></td></tr>
+<tr><td>Превосходная степень</td><td><code class="fr">le/la/les plus</code>, <code class="fr">le/la/les moins</code></td><td><code class="fr">C’est la solution la plus simple.</code></td></tr>
+<tr><td>Порядок местоимений при положительном impératif</td><td>После глагола и через дефис; порядок меняется</td><td><code class="fr">Donne-moi le livre.</code> <code class="fr">Vas-y.</code> <code class="fr">Parles-en.</code></td></tr>
+<tr><td><code class="fr">-s</code> в <code class="fr">tu</code>-impératif</td><td>У <code class="fr">-er</code> глаголов обычно нет <code class="fr">-s</code>, но перед <code class="fr">y / en</code> он появляется</td><td><code class="fr">Parle !</code> <code class="fr">Parles-en !</code> <code class="fr">Vas-y !</code></td></tr>
+</tbody></table></div>
+<p>Практически, чтобы дойти до уверенного B1-эффекта, достаточно держать в голове шесть «скелетов»: <code class="fr">je fais / j’ai fait / je faisais / je vais faire / je ferai / je ferais</code>. Подставляете новый глагол в тот же каркас — и резко снижаете нагрузку на память.</p></div>
+</details><details class="section" open id="section-5">
+  <summary><span>Стратегии для письма и устной речи</span></summary>
+  <div class="section-body"><p>Официальные параметры экзамена крайне важны для стратегии. В TCF письменная часть оценивает три задачи с обязательным соблюдением минимального и максимального объема, а копия может получить очень низкую оценку, если текст нечитабелен, вне темы, не выполнены все задачи или не соблюден объем. Устная часть состоит из трех задач: короткий направляемый диалог, повседневное взаимодействие для получения информации и спонтанное выражение позиции. Оценивание идет по лингвистическим, прагматическим и социолингвистическим критериям; письменные и устные продуктивные задания проходят двойную независимую проверку. <span class="cite">источники: turn30view0, turn31view0, turn21search24</span></p>
+<p>Для письменной части наиболее рациональна такая схема времени, построенная на официальных лимитах слов и реальной трудности задач: <strong>12–15 минут</strong> на задачу 1, <strong>18–20 минут</strong> на задачу 2, <strong>22–25 минут</strong> на задачу 3 и <strong>5 минут</strong> на контроль объема, связок, согласований и адресата. В задаче 1 вам почти всегда нужен короткий понятный месседж; в задаче 2 — мини-рассказ/отчет с комментарием; в задаче 3 — сопоставление двух позиций и ваша собственная позиция. Именно задача 3 чаще всего поднимает или опускает итоговый уровень, потому что тут проверяется уже B1-потенциал: связность, структура и аргументация. <span class="cite">источники: turn31view0</span></p>
+<div class="table-wrap "><table>
+<thead><tr><th>Задание</th><th>Что от вас реально нужно</th><th>Универсальный каркас</th></tr></thead>
+<tbody>
+<tr><td>Письмо, задача 1</td><td>Сообщить, описать, объяснить</td><td><code class="fr">Bonjour/Salut...</code> → <code class="fr">Je t’écris pour...</code> → 3 факта → <code class="fr">À bientôt / Cordialement</code></td></tr>
+<tr><td>Письмо, задача 2</td><td>Рассказать о ситуации и добавить комментарий/позицию</td><td>Контекст → Что произошло → Почему это важно → Что вы хотите/предлагаете</td></tr>
+<tr><td>Письмо, задача 3</td><td>Сравнить 2 позиции и занять свою</td><td>Тема → Позиция A → Позиция B → <code class="fr">À mon avis...</code> + 2 аргумента + вывод</td></tr>
+<tr><td>Устно, задача 1</td><td>Представиться и отвечать коротко</td><td>3 блока: кто вы → чем занимаетесь → привычки/интересы</td></tr>
+<tr><td>Устно, задача 2</td><td>Получить информацию</td><td>Вежливое вступление → 4–5 вопросов → уточнение → благодарность</td></tr>
+<tr><td>Устно, задача 3</td><td>Высказать мнение</td><td>Тезис → причина 1 → пример → причина 2 → нюанс → вывод</td></tr>
+</tbody></table></div>
+<p>Самая ценная «хитрость» для уровня A2–B1 — не пытаться говорить слишком сложно. CEFR B1 прямо допускает компенсацию: описать предмет через признаки, дать более простое похожее слово, перефразировать и даже попросить подтверждения, правильно ли вас поняли. На экзамене это не слабость, а зрелая стратегия. <span class="cite">источники: turn20view2</span></p>
+<div class="table-wrap "><table>
+<thead><tr><th>Ситуация</th><th>Чем заменить провал в словаре</th></tr></thead>
+<tbody>
+<tr><td>Не помните существительное</td><td><code class="fr">C’est une sorte de...</code></td></tr>
+<tr><td>Не помните точный глагол</td><td><code class="fr">Ça sert à...</code> / <code class="fr">On utilise ça pour...</code></td></tr>
+<tr><td>Нужна пауза</td><td><code class="fr">Comment dire...</code> / <code class="fr">En fait...</code></td></tr>
+<tr><td>Не уверены в факте</td><td><code class="fr">Je ne suis pas sûr(e), mais...</code></td></tr>
+<tr><td>Хотите выиграть время</td><td><code class="fr">Si je comprends bien...</code> / <code class="fr">Autrement dit...</code></td></tr>
+</tbody></table></div>
+<p>Частые ошибки, которых надо избегать любой ценой:</p>
+<div class="table-wrap "><table>
+<thead><tr><th>Ошибка</th><th>Почему опасна</th><th>Что делать вместо этого</th></tr></thead>
+<tbody>
+<tr><td>Сменили <code class="fr">vous</code> на <code class="fr">tu</code> без причины</td><td>Падает социолингвистическая адекватность</td><td>Сначала выберите статус адресата и держите его до конца</td></tr>
+<tr><td>Написали красивее, но не по задаче</td><td>Можно получить очень низкий уровень</td><td>Перед ответом подчеркните: цель, адресат, жанр</td></tr>
+<tr><td>Игнорировали лимит слов</td><td>Официальный риск для оценки</td><td>Считать строки/слова и оставлять 5 минут на контроль</td></tr>
+<tr><td>Копируете формулировку задания</td><td>Это прямо нежелательно</td><td>Перефразируйте своими словами</td></tr>
+<tr><td>Даёте мнение без причины</td><td>Звучит как A2-обрубок</td><td>Всегда добавляйте <code class="fr">parce que</code> + 1 пример</td></tr>
+<tr><td>Всё время в présent</td><td>Ограничивает уровень</td><td>Комбинируйте хотя бы <code class="fr">présent + passé composé/imparfait + futur/conditionnel</code></td></tr>
+</tbody></table></div>
+<p>Для устной части полезны готовые начала и завершения:</p>
+<div class="table-wrap "><table>
+<thead><tr><th>Функция</th><th>Формула</th></tr></thead>
+<tbody>
+<tr><td>Начало ответа</td><td><code class="fr">Alors, je vais parler de...</code></td></tr>
+<tr><td>Просьба повторить</td><td><code class="fr">Pardon, vous pouvez répéter, s’il vous plaît ?</code></td></tr>
+<tr><td>Уточнение</td><td><code class="fr">Si j’ai bien compris...</code></td></tr>
+<tr><td>Переход к аргументу</td><td><code class="fr">D’abord... Ensuite...</code></td></tr>
+<tr><td>Вывод</td><td><code class="fr">Pour conclure, je dirais que...</code></td></tr>
+</tbody></table></div>
+<p>По произношению для TCF высокий эффект дают несколько вещей, а не «идеальный акцент». TV5MONDE в фонетических модулях постоянно возвращается к интонации, liaisons, носовым гласным и внятному ритму. Для экзамена достаточно контролировать: вопросительную интонацию, частые liaisons (<code class="fr">vous_avez</code>, <code class="fr">nous_avons</code>, <code class="fr">très_intéressant</code>), различение <code class="fr">an / on / in</code> и отказ от «проглатывания» ключевых слогов. <span class="cite">источники: turn13search0, turn13search1, turn13search2, turn13search3</span></p>
+<p>Ниже — две короткие модели письменного ответа в диапазоне 80–120 слов. Это <strong>тренировочные</strong> тексты; на реальном TCF всегда соблюдайте официальный объем конкретной задачи, даже если он выше. <span class="cite">источники: turn31view0</span></p>
+<h3>Модель короткого сообщения</h3>
+<blockquote>Bonjour Clara,  <br>
+Je t’écris pour te raconter mon week-end à Lille. Samedi, je suis arrivée assez tôt et j’ai visité le centre-ville avec une amie. Nous avons pris un café sur la Grand-Place, puis nous avons fait un petit tour dans un marché local. J’ai beaucoup aimé l’ambiance, parce que les gens étaient souriants et les rues étaient très animées. Dimanche, il faisait un peu froid, mais nous sommes quand même allées au musée. Franchement, cette sortie m’a fait du bien, parce que j’avais besoin de changer d’air. Si tu veux, on peut y aller ensemble la prochaine fois. À bientôt !</blockquote>
+<h3>Модель короткого мнения</h3>
+<blockquote>À mon avis, travailler à distance a des avantages, mais aussi des limites. D’un côté, c’est pratique : on perd moins de temps dans les transports, on peut mieux organiser sa journée et on est souvent plus calme. Par exemple, quand je travaille chez moi, je peux commencer plus tôt et faire une vraie pause à midi. De l’autre côté, il est parfois difficile de rester motivé, surtout quand on vit dans un petit appartement. En plus, on parle moins avec ses collègues. Pour conclure, je dirais que le télétravail est une bonne solution, mais pas tous les jours et pas pour tout le monde.</blockquote></div>
+</details><details class="section" open id="section-6">
+  <summary><span>Одностраничная шпаргалка и график запоминания</span></summary>
+  <div class="section-body"><p>Если делать именно <strong>одну печатную страницу A4</strong>, то лучший вариант — не «запихнуть всё», а распределить материал по шести зонам. Такая структура лучше соответствует тому, что реально нужно доставать из памяти в TCF: начало ответа, основные времена, опорные глаголы, связки, местоимения/артикли и аварийные фразы компенсации. Эта логика хорошо совпадает с официальными критериями и дескрипторами A2–B1: связность, развитие темы, адекватность ситуации и достаточно широкий, но простой репертуар. <span class="cite">источники: turn31view0, turn20view2, turn20view3</span></p>
+<div class="table-wrap "><table>
+<thead><tr><th>Блок страницы</th><th>Что поместить</th></tr></thead>
+<tbody>
+<tr><td>Верхняя полоса</td><td><code class="fr">Pour commencer</code>, <code class="fr">À mon avis</code>, <code class="fr">Par exemple</code>, <code class="fr">En revanche</code>, <code class="fr">Pour conclure</code></td></tr>
+<tr><td>Левая колонка</td><td>отрицание, вопросы, <code class="fr">y / en</code>, порядок местоимений</td></tr>
+<tr><td>Центральный блок</td><td>7 формул времен + модельные окончания</td></tr>
+<tr><td>Правая колонка</td><td>25 глаголов: только нестандартные основы и причастия</td></tr>
+<tr><td>Нижняя левая</td><td>«спасательные» фразы: <code class="fr">Comment dire...</code>, <code class="fr">Ça sert à...</code>, <code class="fr">C’est une sorte de...</code></td></tr>
+<tr><td>Нижняя правая</td><td>универсальные планы для EE1, EE2, EE3 и EO1, EO2, EO3</td></tr>
+</tbody></table></div>
+<p>Ниже — рекомендованный шестинедельный ритм. Это не «магическая» схема, а практичный баланс между частотной лексикой, глагольными каркасами и заданиями TCF.</p>
+<div class="diagram plan-diagram avoid-break">
+  <h3>Шестинедельный план подготовки</h3>
+  <div class="weeks">
+    <div><b>1</b><span>Приветствия, режим дня, présent, артикли</span><small>01.06-07.06</small></div>
+    <div><b>2</b><span>Поездки, еда, покупки, passé composé/imparfait</span><small>08.06-14.06</small></div>
+    <div><b>3</b><span>Здоровье, эмоции, futur proche/simple, conditionnel</span><small>15.06-21.06</small></div>
+    <div><b>4</b><span>Маркеры дискурса, вопросы, pronoms, y/en</span><small>22.06-28.06</small></div>
+    <div><b>5</b><span>Шаблоны письма и устной части, тайминг</span><small>29.06-05.07</small></div>
+    <div><b>6</b><span>Полные прогоны, журнал ошибок, легкий повтор</span><small>06.07-12.07</small></div>
+  </div>
+  <details class="source-code" open><summary>Исходная схема Mermaid</summary><pre><code>gantt
+    title Шестинедельный план подготовки
+    dateFormat  YYYY-MM-DD
+    axisFormat  %d.%m
+    section Фундамент
+    Приветствия, режим дня, présent, артикли     :a1, 2026-06-01, 7d
+    section Быт и прошлое
+    Поездки, еда, покупки, passé composé/imparfait :a2, 2026-06-08, 7d
+    section Мнение и будущее
+    Здоровье, эмоции, futur proche/simple, conditionnel :a3, 2026-06-15, 7d
+    section Связность
+    Маркеры дискурса, вопросы, pronoms, y/en      :a4, 2026-06-22, 7d
+    section Экзамен
+    Шаблоны письма и устной части, тайминг        :a5, 2026-06-29, 7d
+    section Финиш
+    Полные прогоны, журнал ошибок, легкий повтор  :a6, 2026-07-06, 7d</code></pre></details>
+</div>
+<p>Ежедневный и недельный ритм лучше держать простым и повторяемым.</p>
+<div class="table-wrap "><table>
+<thead><tr><th>Ритм</th><th>Что делать</th></tr></thead>
+<tbody>
+<tr><td>Каждый день, 20 минут</td><td>10 карточек лексики по одной теме + 5 фраз целиком вслух</td></tr>
+<tr><td>Каждый день, 15 минут</td><td>5 глаголов по модели <code class="fr">présent → passé composé → imparfait → futur</code></td></tr>
+<tr><td>Каждый день, 10 минут</td><td>1 мини-ответ устно: мнение на 45–60 секунд</td></tr>
+<tr><td>Через день, 15 минут</td><td>1 короткий текст на 80–120 слов</td></tr>
+<tr><td>Раз в неделю</td><td>1 полный устный прогон и 1 полный письменный прогон по таймеру</td></tr>
+<tr><td>После каждого прогона</td><td>Вести журнал ошибок: слово, время, вопрос, связка, произношение</td></tr>
+</tbody></table></div>
+<p>Набор активных промптов для самостоятельной практики:</p>
+<div class="table-wrap "><table>
+<thead><tr><th>Формат</th><th>Промпт</th></tr></thead>
+<tbody>
+<tr><td>Устно</td><td><code class="fr">Опишите свой обычный день и объясните, что вы хотели бы изменить.</code></td></tr>
+<tr><td>Устно</td><td><code class="fr">Попросите совет по культурной поездке в другой город.</code></td></tr>
+<tr><td>Устно</td><td><code class="fr">Что лучше: жить в большом городе или в маленьком?</code></td></tr>
+<tr><td>Устно</td><td><code class="fr">Полезен ли спорт каждый день? Почему?</code></td></tr>
+<tr><td>Письменно</td><td><code class="fr">Напишите короткое сообщение другу о выходных.</code></td></tr>
+<tr><td>Письменно</td><td><code class="fr">Сравните покупки онлайн и в обычном магазине.</code></td></tr>
+<tr><td>Письменно</td><td><code class="fr">Дайте мнение о работе из дома.</code></td></tr>
+<tr><td>Письменно</td><td><code class="fr">Опишите проблему со здоровьем и попросите совет.</code></td></tr>
+</tbody></table></div>
+<p>Алгоритм поведения в день экзамена лучше держать максимально механическим:</p>
+<div class="diagram flow-diagram avoid-break">
+  <h3>Алгоритм поведения в день экзамена</h3>
+  <ol class="flow-list">
+    <li>Начало задания</li><li>Определи адресата, цель и тон</li><li>Подчеркни 3 ключевых слова из темы</li>
+    <li>Устно: тезис -> 2 причины -> 1 пример -> связки -> вывод</li>
+    <li>Письменно: мини-план из 3 абзацев -> текст по задаче -> проверка объема, связок, времен, tu/vous</li>
+    <li>Если забыто слово: перефразируй</li><li>Сдай ответ без лишних исправлений</li>
+  </ol>
+  <details class="source-code" open><summary>Исходная схема Mermaid</summary><pre><code>flowchart TD
+    A[Начало задания] --&gt; B[Определи адресата, цель и тон]
+    B --&gt; C[Подчеркни 3 ключевых слова из темы]
+    C --&gt; D{Это устная часть?}
+    D --&gt;|Да| E[Скажи тезис]
+    E --&gt; F[Добавь 2 причины и 1 пример]
+    F --&gt; G[Свяжи: d&#x27;abord, ensuite, parce que, en revanche]
+    G --&gt; H[Заверши выводом]
+    D --&gt;|Нет| I[Сделай мини-план из 3 абзацев]
+    I --&gt; J[Напиши по задаче, а не «красиво вообще»]
+    J --&gt; K[Проверь объем, связки, времена, tu/vous]
+    H --&gt; L[Если забыто слово: перефразируй]
+    K --&gt; L
+    L --&gt; M[Сдай ответ без лишних исправлений]</code></pre></details>
+</div>
+<p>Если вам нужны именно <strong>официальные и надежные</strong> материалы для дальнейшей подготовки, то приоритет лучше держать такой: во-первых, France Éducation international — официальный мануал кандидата, примеры заданий, правила оценивания и подборки ресурсов; во-вторых, CEFR/CECRL-дескрипторы A2 и B1; в-третьих, TV5MONDE — тренировочный TCF, уровневые упражнения A2 и B1, словарь, грамматика, произношение; в-четвертых, Le Robert / Le Conjugueur — как быстрый нормативный справочник по формам и правилам. France Éducation international прямо указывает на мануалы подготовки, ресурсы для TCF и референсы <code class="fr">Niveau A2</code> и <code class="fr">Niveau B1 pour le français</code>; TV5MONDE предлагает тренировочный TCF в близких условиях и крупные наборы упражнений по уровням. <span class="cite">источники: turn29view0, turn21search1, turn21search6, turn21search9, turn21search17, turn21search10, turn19view0, turn19view1, turn37search12</span></p></div>
+</details><details class="section" open id="section-7">
+  <summary><span>Ограничения</span></summary>
+  <div class="section-body"><p>Эта версия сознательно заточена под <strong>классический TCF с письменной и устной частями в формате 3+3</strong>. Если вы сдаете именно TCF IRN, то стратегии по времени, объему и формату ответов нужно адаптировать под более короткую структуру, хотя словарь, глагольные каркасы, связки, компенсация и базовые грамматические схемы остаются полезными и там. <span class="cite">источники: turn21search5, turn30view0</span></p></div>
+</details>
+</main>
+<script>
+(function () {
+  const details = Array.from(document.querySelectorAll('details.section, details.source-code'));
+  window.addEventListener('beforeprint', () => details.forEach(d => d.open = true));
+}());
+</script>
+</body>
+</html>
